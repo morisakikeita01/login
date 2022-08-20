@@ -94,7 +94,7 @@
     color: #fff;
     width: 100%;
     padding: 15px 0;
-    margin-top: 20px;
+    margin-top: 30px;
     background-color: #1c32e2;
 }
 </style>

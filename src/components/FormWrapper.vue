@@ -57,14 +57,14 @@
 }
 .form-container .h2 {
     font-size: 1.8rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .form-container .lead {
     max-width: 500px;
     color: #808080;
     font-size: 0.9rem;
-    margin: 0px 0 30px;
+    margin: 0px 0 40px;
 }
 
 .form-container .user-container {
