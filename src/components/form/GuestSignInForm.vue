@@ -6,9 +6,9 @@
                     name="name"
                     label="お名前"
                     placeholder="お名前を入力してください" />
-        <!-- charactor -->
-        <form-charactor v-model="guestFormData"
-                        :charactors="charactors" />
+        <!-- character -->
+        <form-character v-model="guestFormData"
+                        :characters="characters" />
         <!-- other error -->
         <div v-if="errors && errors.length>0" class="row errors">
             <span v-for="(error, idx) in errors" :key="idx" class="">{{error}}</span>
@@ -22,12 +22,12 @@
 
 <script setup lang="ts">
     import formInput from '@/components/form/Input.vue'
-    import formCharactor from '@/components/form/Charactor.vue'
+    import formCharacter from '@/components/form/Character.vue'
     import { ref, reactive } from 'vue'
     import RequestService from '@/services/RequestService';
     import {FormData} from '@/types/Form'
 
-    const charactors = [ "appstore", "finder", "github", "photos", "safari", "terminal" ]
+    const characters = [ "soldier", "robot", "chara01", "chara02", "chara03", "chara04", "chara05", "chara06", "chara07", "chara08" ]
 
     /*
     *to display error
@@ -39,10 +39,10 @@
             error: null,
             value: ""
         },
-        charactor: {
+        character: {
             required: true,
             error: null,
-            value: "appstore",
+            value: "soldier",
         }
     })
 
@@ -53,8 +53,10 @@
     const sendSignIn = (event:any) => {
         errors.value = []
         guestFormData.name.error = null
-        guestFormData.charactor.error = null
-        service.signIn({name: guestFormData.name.value, charactor:guestFormData.charactor.value})
+        guestFormData.character.error = null
+        const data = {name: guestFormData.name.value, character:guestFormData.character.value}
+        sessionStorage.setItem('nazare', JSON.stringify(data))
+        service.signIn(data)
         .then((response: any) => {
             console.log(response.data)
             if (response.data.hasOwnProperty("key")){
@@ -84,7 +86,7 @@
 <style scoped>
 .form {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
 }
 .form .errors {
     color: red;
@@ -94,7 +96,7 @@
     color: #fff;
     width: 100%;
     padding: 15px 0;
-    margin-top: 30px;
+    margin-top: 20px;
     background-color: #1c32e2;
 }
 </style>

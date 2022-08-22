@@ -3,7 +3,7 @@ import axios from "axios";
 import {User, UserError} from "@/types/User"
 
 type Method = "post" | "put" | "patch" | "get" | "delete"
-type Data = {email?:string,password?:string,charactor:string,name?:string}
+type Data = {email?:string,password?:string,character?:string,name?:string}
 
 export default class RequestService {
   public data: any;
@@ -41,7 +41,7 @@ export default class RequestService {
         const fd = new FormData()
         if(data.email)fd.append("email", data.email)
         if(data.password)fd.append("password", data.password)
-        if(data.charactor)fd.append("charactor", data.charactor)
+        if(data.character)fd.append("character", data.character)
         if(data.name)fd.append("name", data.name)
       axios.request({
         method: "post",

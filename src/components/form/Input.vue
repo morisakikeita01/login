@@ -53,7 +53,7 @@ const emit = defineEmits<Emits>();
     color: #808080;
     font-size: 0.8rem;
     line-height: 1;
-    padding: 0px 0 5px 0;
+    padding: 0px 0 10px 0;
 }
 .formInput input {
     height: 50px;
@@ -64,10 +64,14 @@ const emit = defineEmits<Emits>();
     padding: 0 2rem 0 1rem;
 }
 .formInput input::placeholder {
-    color: #cacaca;
+    color: #afafaf;
 }
 .formInput input.error {
     background-color: rgba(255, 75, 75, 0.1);
+}
+.formInput .error {
+   color: red;
+   font-size: 0.7rem;
 }
 .formInput .fas {
     color: rgb(150, 150, 150);

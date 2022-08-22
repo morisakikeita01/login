@@ -14,9 +14,6 @@
                     placeholder="パスワードを入力してください"
                     :iconClass="dynamicIconClass"
                     @showPassword="showPassword" />
-        <!-- charactor -->
-        <form-charactor v-model="userFormData"
-                        :charactors="charactors" />
         <!-- other error -->
         <div v-if="errors && errors.length>0" class="row errors">
             <span v-for="(error, idx) in errors" :key="idx" class="">{{error}}</span>
@@ -30,12 +27,9 @@
 
 <script setup lang="ts">
     import formInput from '@/components/form/Input.vue'
-    import formCharactor from '@/components/form/Charactor.vue'
     import { ref, reactive } from 'vue'
     import RequestService from '@/services/RequestService';
     import {FormData} from '@/types/Form'
-
-    const charactors = [ "appstore", "finder", "github", "photos", "safari", "terminal" ]
 
     /*
     *to display error
@@ -51,11 +45,6 @@
             required:true,
             error: null,
             value: "",
-        },
-        charactor: {
-            required: true,
-            error: null,
-            value: "appstore",
         }
     })
 
@@ -65,10 +54,11 @@
     const service = new RequestService();
     const sendSignIn = (event:any) => {
         errors.value = []
-        userFormData.emil.error = null
+        userFormData.email.error = null
         userFormData.password.error = null
-        userFormData.charactor.error = null
-        service.signIn({email: userFormData.email.value, password:userFormData.password.value, charactor:userFormData.charactor.value})
+        const data = {email: userFormData.email.value, password:userFormData.password.value}
+        sessionStorage.setItem('nazare', JSON.stringify(data))
+        service.signIn(data)
         .then((response: any) => {
             console.log(response.data)
             if (response.data.hasOwnProperty("key")){
@@ -113,7 +103,7 @@
 <style scoped>
 .form {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
 }
 
 .form .errors {
