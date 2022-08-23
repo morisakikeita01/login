@@ -19,13 +19,13 @@
         </div>
         
         <!-- sns menu -->
-        <div class="sns-container">
+        <!-- <div class="sns-container">
             <p class="lead"> またはSNSアカウントでログイン </p>
             <ul class="items flex align-center justify-space-between">
                 <li class="item flex align-center justify-center"><img src="/images/sns/google.png"><span class="text">Googleアカウント</span></li>
                 <li class="item flex align-center justify-center"><img src="/images/sns/apple.svg"><span class="text">Appleアカウント</span></li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </template>
 

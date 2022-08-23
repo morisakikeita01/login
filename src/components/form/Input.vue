@@ -69,10 +69,6 @@ const emit = defineEmits<Emits>();
 .formInput input.error {
     background-color: rgba(255, 75, 75, 0.1);
 }
-.formInput .error {
-   color: red;
-   font-size: 0.7rem;
-}
 .formInput .fas {
     color: rgb(150, 150, 150);
     font-size: 0.9rem;
@@ -82,5 +78,9 @@ const emit = defineEmits<Emits>();
     right: 0.9rem;
     transform: translateY(50%);
     cursor: pointer;
+}
+.errors {
+   color: red;
+   font-size: 0.7rem;
 }
 </style>

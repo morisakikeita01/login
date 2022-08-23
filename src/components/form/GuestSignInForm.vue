@@ -55,7 +55,7 @@
         guestFormData.name.error = null
         guestFormData.character.error = null
         const data = {name: guestFormData.name.value, character:guestFormData.character.value}
-        sessionStorage.setItem('nazare', JSON.stringify(data))
+        sessionStorage.setItem('nazarev1', JSON.stringify(data))
         service.signIn(data)
         .then((response: any) => {
             console.log(response.data)
@@ -64,6 +64,7 @@
             }
         },
         (error) => {
+            // console.log(error.response.data)
              Object.keys(error.response.data).forEach(errorKey => {
                  let flag = false
                  Object.keys(guestFormData).forEach(formKey => {
@@ -78,6 +79,7 @@
                      errors.value?.push(error.response.data[errorKey])
                  }
              })
+            //  console.log(guestFormData)
         })
     }
 

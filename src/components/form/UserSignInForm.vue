@@ -57,7 +57,6 @@
         userFormData.email.error = null
         userFormData.password.error = null
         const data = {email: userFormData.email.value, password:userFormData.password.value}
-        sessionStorage.setItem('nazare', JSON.stringify(data))
         service.signIn(data)
         .then((response: any) => {
             console.log(response.data)
