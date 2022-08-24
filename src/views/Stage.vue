@@ -4,7 +4,7 @@
       <div class="flex-column align-center" :class="{loading:showLoading}">
 
         <!-- 操作コンポーネント -->
-        <GameControls @updateActive="updateActive" />
+        <GameControls/>
         <!-- ローディング -->
         <Transition mode="out-in" name="slide-fade">
           <LoadingProgress v-if="showLoading" :percent="percent" :text="loadingText[currentText]" />
@@ -44,9 +44,6 @@ const updateLoading = () => {
   }
 }
 
-const updateActive = () => {
-  console.log("updateActive")
-}
 
 const interv = setInterval(updateLoading, 100)
 

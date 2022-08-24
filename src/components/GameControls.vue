@@ -66,15 +66,16 @@ import MouseIcon from './icons/MouseIcon.vue';
     showClose?: boolean
     active?: boolean
   }
+  // Emit for using 'active' as v-model
   interface Emits {
-    (e: "updateActive", value: boolean): void;
+    (e: "update:active", value: boolean): void;
   }
 
   const props = defineProps<Props>();
   const emit = defineEmits<Emits>();
   
   const close = () => {
-    emit('updateActive',false)
+    emit('update:active',false)
   }
 </script>
 <style scoped>
