@@ -9,12 +9,12 @@
 button.start-btn {
   /* margin-top: 30px; */
   margin-top: 42px;
-  /* background-color: #ffffff;
-  color: #1C32E2; */
+  background-color: #ffffff;
+  color: #1C32E2;
   /* box-shadow: 0 0 10px #fff; */
 
-  background-color: #1C32E2;
-  color: white;
+  /* background-color: #1C32E2;
+  color: white; */
   /* box-shadow: 0 0 13px 5px #fff; */
   width: 220px;
   height: 60px;
@@ -31,8 +31,8 @@ button.start-btn span.play-icon {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  /* background-color: #000; */
-  background-color: white;
+  background-color: #000;
+  /* background-color: white; */
   top: 5px;
   right: 7px;
 }
@@ -42,8 +42,8 @@ button.start-btn span.play-icon::after {
   position: absolute;
   top: 7px;
   left: 8px;
-  /* border-left: solid 5px #fff; */
-  border-left: solid 5px #000;
+  border-left: solid 5px #fff;
+  /* border-left: solid 5px #000; */
   border-top: solid 3px transparent;
   border-bottom: solid 3px transparent;
 }
