@@ -63,8 +63,8 @@ import ArrowRightIcon from './icons/ArrowRightIcon.vue';
 import MouseIcon from './icons/MouseIcon.vue';
 
   interface Props {
-    showClose: boolean
-    active: boolean
+    showClose?: boolean
+    active?: boolean
   }
   interface Emits {
     (e: "updateActive", value: boolean): void;
