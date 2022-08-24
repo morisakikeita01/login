@@ -4,7 +4,7 @@
       <div class="flex-column align-center" :class="{loading:showLoading}">
 
         <!-- 操作コンポーネント -->
-        <GameControls :showClose="false" :active="true" @updateActive="updateActive" />
+        <GameControls @updateActive="updateActive" />
         <!-- ローディング -->
         <Transition mode="out-in" name="slide-fade">
           <LoadingProgress v-if="showLoading" :percent="percent" :text="loadingText[currentText]" />

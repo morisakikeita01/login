@@ -101,8 +101,8 @@
 <script setup lang="ts">
 
   interface Props {
-    showClose: boolean
-    active: boolean
+    showClose?: boolean
+    active?: boolean
   }
   interface Emits {
     (e: "updateActive", value: boolean): void;
