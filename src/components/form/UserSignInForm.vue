@@ -1,13 +1,13 @@
 <template>
     <form class="form" @submit.prevent @submit="sendSignIn($event)">
         <!-- email -->
-        <form-input v-model="userFormData"
+        <InputText v-model="userFormData"
                     type="text"
                     name="email"
                     label="メールアドレス"
                     placeholder="メールアドレスを入力してください" />
         <!-- password -->
-        <form-input v-model="userFormData"
+        <InputText v-model="userFormData"
                     :type="dynamicInputType"
                     name="password"
                     label="パスワード"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-    import formInput from '@/components/form/Input.vue'
+    import InputText from '@/components/form/InputText.vue'
     import { ref, reactive } from 'vue'
     import RequestService from '@/services/RequestService';
     import {FormData} from '@/types/Form'

@@ -7,6 +7,11 @@ let routes = [
         component: () => import('../views/SignIn.vue')
     },
     {
+        path: "/stage",
+        name: "Stage",
+        component: () => import('../views/Stage.vue')
+    },
+    {
         path: "/:pathMatch(.*)*",
         redirect: "404"
     }

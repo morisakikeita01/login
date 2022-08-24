@@ -6,10 +6,11 @@ export default function() {
         // /macOS/.test(navigator.userAgentData.platform); // Newer alternative, but not fully supported
     }
     const isSmartphone = ():boolean => {
-        if(window.innerWidth < 768) {
+        if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     const isEdge = ():boolean => {
