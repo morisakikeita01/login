@@ -73,7 +73,7 @@ watch (() => percent.value,() => {
 
 #popup > div {
   height: 358px;
-  /* background-color: white; */
+  background-color: white;
   /* transition: 0.4s 2.0s; */
 }
 /* #popup > div.loading {
@@ -104,6 +104,7 @@ watch (() => percent.value,() => {
   opacity: 0;
 }
 .slide-fade-leave-to {
+  transform: translateX(10px);
   opacity: 0;
 }
 </style>
