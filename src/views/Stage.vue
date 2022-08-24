@@ -4,7 +4,7 @@
       <div class="flex-column align-center" :class="{loading:showLoading}">
 
         <!-- 操作コンポーネント -->
-        <Controls/>
+        <GameControls :showClose="false" :active="true" @updateActive="updateActive" />
         <!-- ローディング -->
         <Transition mode="out-in" name="slide-fade">
           <LoadingProgress v-if="showLoading" :percent="percent" :text="loadingText[currentText]" />
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import Controls from "@/components/Controls.vue"
+import GameControls from "@/components/GameControls.vue"
 import LoadingProgress from "@/components/Loading/LoadingProgress.vue";
 import StartGameButton from "@/components/button/StartGameButton.vue";
 import {ref, watch} from "vue"
@@ -42,6 +42,10 @@ const updateLoading = () => {
   if(percent.value >= 0.0 && percent.value <= 100.0){
     percent.value += parseFloat((Math.random()*3.0).toFixed(2))
   }
+}
+
+const updateActive = () => {
+  console.log("updateActive")
 }
 
 const interv = setInterval(updateLoading, 100)

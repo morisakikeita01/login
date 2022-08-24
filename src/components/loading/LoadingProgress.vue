@@ -15,42 +15,34 @@
   </div>
 </div>
 </template>
-<script lang="ts">
-import {defineComponent, PropType, ref, watch, onMounted, computed} from "vue";
-export default defineComponent({
-  props: {
-    text: String as PropType<string>,
-    percent: {
-      type: Number as PropType<number>,
-      default: 0
-    }
-  },
-  setup(props,{emit}){
-    const startTime = ref<number>(0)
-    const startPer = ref<number>(0)
-    const timeLeft = ref<number>(0)
+<script setup lang="ts">
+  import {ref, watch, onMounted, computed} from "vue";
 
-    const cutoffPercent = computed(() => {
-      return Math.min(100.0,Math.max(props.percent,0.0))
-    })
-
-    watch(() => props.percent, (val) => {
-      const secs = (Date.now()-startTime.value)/1000 //sec since start
-      const per = (cutoffPercent.value - startPer.value)/secs
-      timeLeft.value = parseFloat(((100 - cutoffPercent.value)/ per).toFixed(0))
-    })
-
-    onMounted(() => {
-      startTime.value = Date.now()
-      startPer.value = props.percent
-    })
-
-    return {
-      timeLeft, 
-      cutoffPercent
-    }
+  interface Props {
+    text: string
+    percent:number
   }
-})
+
+  const props = defineProps<Props>();
+  const startTime = ref<number>(0)
+  const startPer = ref<number>(0)
+  const timeLeft = ref<number>(0)
+
+  const cutoffPercent = computed(() => {
+    return Math.min(100.0,Math.max(props.percent,0.0))
+  })
+
+  watch(() => props.percent, (val) => {
+    const secs = (Date.now()-startTime.value)/1000 //sec since start
+    const per = (cutoffPercent.value - startPer.value)/secs
+    timeLeft.value = parseFloat(((100 - cutoffPercent.value)/ per).toFixed(0))
+  })
+
+  onMounted(() => {
+    startTime.value = Date.now()
+    startPer.value = props.percent
+  })
+
 </script>
 <style scoped>
 .loading-wrapper {

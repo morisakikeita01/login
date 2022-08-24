@@ -98,26 +98,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
-export default defineComponent({
-  props: {
-    showClose: {
-      type: Boolean as PropType<boolean>,
-      default: false
-    },
-    active: Boolean as PropType<boolean>,
-  },
-  
-  setup(props,{emit}){
-    const close = () => {
-      emit('update:active',false)
-    }
-    return {
-      close
-    }
+<script setup lang="ts">
+
+  interface Props {
+    showClose: boolean
+    active: boolean
   }
-})
+  interface Emits {
+    (e: "updateActive", value: boolean): void;
+  }
+
+  const props = defineProps<Props>();
+  const emit = defineEmits<Emits>();
+  
+  const close = () => {
+    emit('updateActive',false)
+  }
 </script>
 <style scoped>
 /* #controls-modal {
