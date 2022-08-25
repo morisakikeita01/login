@@ -2,9 +2,9 @@
   <div id="controls-modal" class="flex align-center justify-center">
     <div class="flex-column align-center">
       <button class="close-btn" @click="close()" v-if="showClose">
-        <div class="hexagon">
+        <span class="hexagon">
           <CloseIcon/>
-        </div>
+        </span>
       </button>
       <div class="controls-input flex-column align-center">
         <div class="trapezoid t1"></div>
