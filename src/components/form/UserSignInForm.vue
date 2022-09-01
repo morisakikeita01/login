@@ -14,6 +14,9 @@
                     placeholder="パスワードを入力してください"
                     :iconClass="dynamicIconClass"
                     @showPassword="showPassword" />
+            <!-- character -->
+            <InputCharacter v-model="userFormData"
+                          :characters="characters"/>
         <!-- other error -->
         <div v-if="errors && errors.length>0" class="row errors">
             <span v-for="(error, idx) in errors" :key="idx" class="">{{error}}</span>
@@ -29,8 +32,10 @@
     import InputText from '@/components/form/InputText.vue'
     import { ref, reactive } from 'vue'
     import RequestService from '@/services/RequestService';
-    import {FormData} from '@/types/Form'
+    import {FormData} from '@/types/Form';
+    import InputCharacter from "@/components/form/InputCharacter.vue";
 
+    const characters = ["soldier", "robot", "chara01", "chara02", "chara03", "chara04", "chara05", "chara06", "chara07", "chara08"]
     /*
     *to display error
     */ 
@@ -45,6 +50,11 @@
             required:true,
             error: null,
             value: "",
+        },
+        character: {
+          required: true,
+          error: null,
+          value: "soldier",
         }
     })
 
@@ -56,12 +66,18 @@
         errors.value = []
         userFormData.email.error = null
         userFormData.password.error = null
-        const data = {email: userFormData.email.value, password:userFormData.password.value}
+        userFormData.character.error = null
+        const data = {email: userFormData.email.value, password:userFormData.password.value, character: userFormData.character.value}
         service.signIn(data)
         .then((response: any) => {
             console.log(response.data)
             if (response.data.hasOwnProperty("key")){
-                // router.push("Stage")
+              sessionStorage.setItem('nazarev1', JSON.stringify({
+                // charNickname: response.data,
+                charFilePath: userFormData.character.value,
+                roomUrlPath: "sample",
+              }))
+            // router.push("Stage")
             }
         },
         (error) => {
