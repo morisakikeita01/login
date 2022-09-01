@@ -67,13 +67,13 @@
         userFormData.email.error = null
         userFormData.password.error = null
         userFormData.character.error = null
-        const data = {email: userFormData.email.value, password:userFormData.password.value, character: userFormData.character.value}
+        const data = {email: userFormData.email.value, password:userFormData.password.value}
         service.signIn(data)
         .then((response: any) => {
             console.log(response.data)
             if (response.data.hasOwnProperty("key")){
               sessionStorage.setItem('nazarev1', JSON.stringify({
-                // charNickname: response.data,
+                charNickname: response.data.user.username||'NULL',
                 charFilePath: userFormData.character.value,
                 roomUrlPath: "sample",
               }))
